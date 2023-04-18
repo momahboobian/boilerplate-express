@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 // const path = require("path");
 
 // Challenge 1
@@ -19,9 +20,13 @@ app.get("/", (req, res) => {
 // Challenge 4
 app.use("/public", express.static(__dirname + "/public"));
 
-// Challenge 5
+// Challenge 5 => Challenge 6
 app.get("/json", (req, res) => {
-  res.json({ message: "Hello json" });
+  let message = "Hello json";
+  if (process.env.MESSAGE_STYLE === "uppercase") {
+    message = message.toUpperCase();
+  }
+  res.json({ message: message });
 });
 
 module.exports = app;
