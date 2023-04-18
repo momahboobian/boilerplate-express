@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const path = require("path");
+// const path = require("path");
 
 // Challenge 1
 // console.log("Hello World");
@@ -18,5 +18,10 @@ app.get("/", (req, res) => {
 
 // Challenge 4
 app.use("/public", express.static(__dirname + "/public"));
+
+// Challenge 5
+app.get("/json", (req, res) => {
+  res.json({ message: "Hello json" });
+});
 
 module.exports = app;
