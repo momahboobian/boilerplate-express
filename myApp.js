@@ -1,7 +1,14 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-// const path = require("path");
+
+// Challenge 7
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
+};
+
+app.use(logger);
 
 // Challenge 1
 // console.log("Hello World");
