@@ -37,10 +37,15 @@ app.get("/json", (req, res) => {
 });
 
 // Challenge 8
-app.get("/date", (req, res) => {
-  const currentDate = new Date();
-  const dateStr = currentDate.toISOString().slice(0, 10);
-  res.send(dateStr);
-});
+app.get(
+  "/now",
+  (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+  },
+  (req, res) => {
+    res.json({ time: req.time });
+  }
+);
 
 module.exports = app;
