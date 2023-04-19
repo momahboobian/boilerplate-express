@@ -10,6 +10,7 @@ const logger = (req, res, next) => {
 };
 
 app.use(logger);
+
 // Challenge 11
 app.use(bodyParser.urlencoded({ extended: false }));
 
