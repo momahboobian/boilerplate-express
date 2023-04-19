@@ -9,6 +9,7 @@ const logger = (req, res, next) => {
 };
 
 app.use(logger);
+app.use(express.urlencoded({ extended: false }));
 
 // Challenge 1
 // console.log("Hello World");
@@ -52,5 +53,23 @@ app.get(
 app.get("/:word/echo", (req, res) => {
   res.json({ echo: req.params.word });
 });
+
+// Challenge 10
+app
+  .route("/name")
+  .get((req, res) => {
+    const firstName = req.query.first;
+    const lastName = req.query.last;
+    const fullName = `${firstName} ${lastName}`;
+
+    res.json({ name: fullName });
+  })
+  .post((req, res) => {
+    const firstName = req.body.first;
+    const lastName = req.body.last;
+    const fullName = `${firstName} ${lastName}`;
+
+    res.json({ name: fullName });
+  });
 
 module.exports = app;
