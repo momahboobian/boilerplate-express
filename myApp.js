@@ -36,4 +36,11 @@ app.get("/json", (req, res) => {
   res.json({ message: message });
 });
 
+// Challenge 8
+app.get("/date", (req, res) => {
+  const currentDate = new Date();
+  const dateStr = currentDate.toISOString().slice(0, 10);
+  res.send(dateStr);
+});
+
 module.exports = app;
