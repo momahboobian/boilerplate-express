@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 require("dotenv").config();
 
 // Challenge 7
@@ -9,7 +10,8 @@ const logger = (req, res, next) => {
 };
 
 app.use(logger);
-app.use(express.urlencoded({ extended: false }));
+// Challenge 11
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Challenge 1
 // console.log("Hello World");
@@ -54,7 +56,7 @@ app.get("/:word/echo", (req, res) => {
   res.json({ echo: req.params.word });
 });
 
-// Challenge 10
+// Challenge 10 => Challenge 12
 app
   .route("/name")
   .get((req, res) => {
